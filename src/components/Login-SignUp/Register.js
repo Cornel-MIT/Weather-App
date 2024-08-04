@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './Register.css'; 
 
-
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,15 +10,30 @@ const Register = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-    const user = { username, password };
-    login(user);
-    navigate('/');
+    try {
+      const response = await fetch('http://localhost:4000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      if (!response.ok) {
+        throw new Error('Registration failed');
+      }
+      const data = await response.json();
+      login(data.user);
+      navigate('/');
+    } catch (error) {
+      console.error('Registration failed:', error);
+      alert('Registration failed');
+    }
   };
 
   return (

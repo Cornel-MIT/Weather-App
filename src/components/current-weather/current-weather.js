@@ -1,12 +1,12 @@
 import React from "react";
 import "./current-weather.css";
 
-const CurrentWeather = ({ data }) => {
+const CurrentWeather = ({ data, locationName }) => {
   return (
     <div className="weather">
       <div className="top">
         <div>
-          <p className="city">{data.city}</p>
+          <p className="city">{locationName || data.name}</p> {/* Display location name */}
           <p className="weather-description">{data.weather[0].description}</p>
         </div>
         <img

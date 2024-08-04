@@ -9,11 +9,26 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { username, password };
-    login(user);
-    navigate('/');
+    try {
+      const response = await fetch('http://localhost:4000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+      const data = await response.json();
+      login(data.user);
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error);
+      alert('Login failed');
+    }
   };
 
   const handleRegisterClick = () => {

@@ -3,10 +3,10 @@ import CurrentWeather from './current-weather/current-weather';
 import Forecast from './forecast/forecast';
 import { WEATHER_API_URL, WEATHER_API_KEY } from '../api';
 
-
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
+  const [locationName, setLocationName] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -26,6 +26,9 @@ const Home = () => {
 
           setCurrentWeather(weatherResponse);
           setForecast(forecastResponse);
+
+          const { name } = weatherResponse;
+          setLocationName(name);
         })
         .catch(console.log);
     });
@@ -34,7 +37,7 @@ const Home = () => {
   return (
     <div>
       <h2 className='home-title'>Your Weather Forecast For Today</h2>
-      {currentWeather && <CurrentWeather data={currentWeather} />}
+      {currentWeather && <CurrentWeather data={currentWeather} locationName={locationName} />}
       {forecast && <Forecast data={forecast} />}
     </div>
   );

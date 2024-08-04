@@ -16,7 +16,7 @@ const Navigation = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/new-location">New Location</Link>
             </li>
-            <li className="nav-item">
+            <li className="logout">
               <button className="nav-button" onClick={logout}>Logout</button>
             </li>
           </>
