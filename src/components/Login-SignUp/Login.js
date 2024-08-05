@@ -52,9 +52,9 @@ const Login = () => {
           placeholder="Password"
         />
         <button type="submit">Login</button>
-        <button type="button" className="register-button" onClick={handleRegisterClick}>
-          Register
-        </button>
+        <a href="#" className="register-link" onClick={handleRegisterClick}>
+          Dot have an account? <strong>Register</strong>
+       </a>
       </form>
     </div>
   );
