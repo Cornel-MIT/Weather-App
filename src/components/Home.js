@@ -3,7 +3,7 @@ import CurrentWeather from './current-weather/current-weather';
 import Forecast from './forecast/forecast';
 import { WEATHER_API_URL, WEATHER_API_KEY } from '../api';
 
-const Home = () => {
+const Home = ({ isMenuOpen }) => {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [locationName, setLocationName] = useState('');
@@ -35,7 +35,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className={`container ${isMenuOpen ? 'pushed' : ''}`}>
       <h2 className='home-title'>Your Weather Forecast For Today</h2>
       {currentWeather && <CurrentWeather data={currentWeather} locationName={locationName} />}
       {forecast && <Forecast data={forecast} />}

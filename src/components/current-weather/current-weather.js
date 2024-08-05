@@ -2,11 +2,15 @@ import React from "react";
 import "./current-weather.css";
 
 const CurrentWeather = ({ data, locationName }) => {
+  if (!data || !data.weather || !data.weather[0] || !data.main || !data.wind) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="weather">
       <div className="top">
         <div>
-          <p className="city">{locationName || data.name}</p> {/* Display location name */}
+          <p className="city">{locationName || data.name}</p> 
           <p className="weather-description">{data.weather[0].description}</p>
         </div>
         <img

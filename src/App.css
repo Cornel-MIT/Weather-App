@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: "Poppins", sans-serif;
-  background-image: url();
 }
 
 .App-logo {
@@ -39,22 +38,25 @@
   }
 }
 
-
 .navbar {
   background-color: #333;
-  padding: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .nav-list {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-item {
-  margin: 0 15px; 
+  margin: 0 15px;
 }
 
 .nav-button {
@@ -66,10 +68,51 @@
   border-radius: 5px;
   font-weight: bolder;
   background-color: #333;
+  display: flex;
 }
 
 .nav-button:hover {
   background-color: red;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.9);
+    position: static;
+  }
+
+  .nav-list.active {
+    display: flex;
+    height: auto;
+  }
+
+  .nav-item {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
 
 .nav-link {
@@ -80,17 +123,17 @@
 }
 
 .nav-link:hover {
-  color: #ffcc00; 
-  text-shadow: 0 0 10px #ffcc00; 
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-image: url('./media/background2.jpg'); 
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-image: url('./media/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-title {
@@ -99,7 +142,11 @@ body {
 
 .container {
   position: relative;
-  z-index: 1; 
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: padding-top 0.3s ease; 
+}
+
+.container.pushed {
+  padding-top: 200px; 
 }
