@@ -30,15 +30,15 @@ A real-time weather application that provides current weather conditions, hourly
 ## Screenshots
 
 ### Home Screen (Current Weather)
-![Home Screen](src/media/Weather App.png)
+![Home Screen](src/media/Weather_App.png)
 *Displays current weather conditions for the user’s selected or detected location.*
 
 ### Daily Forecast
-![Daily Forecast](src/media/Weather App5.png)
+![Daily Forecast](src/media/Weather_App5.png)
 *Displays the weather forecast for the upcoming week, including high/low temperatures and conditions.*
 
 ### Multiple Locations
-![Multiple Locations](src/media/Weather App2.png)
+![Multiple Locations](src/media/Weather_App2.png)
 *Users can add, view, and switch between different saved locations for weather updates.*
 
 ## Installation
